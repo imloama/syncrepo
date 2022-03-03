@@ -6,5 +6,5 @@ folder="D:\\workspace\\syncrepos"
     from="https://github.com/imloama/syncrepo.git"
     target="https://github.com/imloama/syncrepo.git"
     branch="main"
-    interval=60
+    cron="0 0/1 * * * ?"
     enable=true

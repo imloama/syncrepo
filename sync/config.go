@@ -18,7 +18,7 @@ type Repo struct {
 	From     string // 来源仓库
 	Target   string // 目的仓库
 	Branch   string // 分支名
-	Interval int    // 时间间隔，单位是秒
+	Cron string    // 间隔
 	Enable   bool   // 是否启用
 }
 
