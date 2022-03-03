@@ -84,8 +84,14 @@ func(svr *gitService)Sync(repoName string)error{
 
 	err = w.Pull(&git.PullOptions{ RemoteName: "origin" })
 	if err!=nil{
-		fmt.Printf("文件夹【%s】pull错误！%v\n", folder, err)
-		return err
+
+		if err != git.NoErrAlreadyUpToDate {
+			fmt.Printf("文件夹【%s】pull错误！%v\n", folder, err)
+			return err
+		}else{
+			fmt.Printf("文件夹【%s】pull正常，仓库已经是最新的！", folder)
+		}
+		//return err
 	}
 	w.Pull(&git.PullOptions{ RemoteName: "target" })
 
@@ -96,9 +102,12 @@ func(svr *gitService)Sync(repoName string)error{
 		RemoteName: "target",
 	})
 	if err!=nil{
-		fmt.Printf("文件夹【%s】push错误！%v\n", folder, err)
-		return err
+		if err != git.NoErrAlreadyUpToDate {
+			fmt.Printf("文件夹【%s】push错误！%v\n", folder, err)
+			return err
+		}else{
+			fmt.Printf("文件夹【%s】push正常，仓库已经是最新的！\n", folder)
+		}
 	}
-
 	return nil
 }
