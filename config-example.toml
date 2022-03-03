@@ -1,0 +1,10 @@
+ip="0.0.0.0"
+port=3773
+folder="D:\\workspace\\syncrepos"
+[[repos]]
+    name="demo1"
+    from="https://github.com/imloama/syncrepo.git"
+    target="https://github.com/imloama/syncrepo.git"
+    branch="main"
+    interval=60
+    enable=true
